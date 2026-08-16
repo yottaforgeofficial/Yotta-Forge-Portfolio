@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-charcoal-700;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-charcoal-900 text-offwhite font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(61, 61, 61, 0.3) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(61, 61, 61, 0.3) 1px, transparent 1px);
+  }
+  
+  .spark-glow {
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
+  }
+  
+  .spark-glow-hover:hover {
+    box-shadow: 0 0 25px rgba(255, 87, 34, 0.6);
+  }
+}
