@@ -227,13 +227,19 @@ function App() {
             </p>
           </div>
           <div className="max-w-xl mx-auto">
-            <form className="space-y-6">
+            <form 
+              action="https://formspree.io/f/mgawnwne" 
+              method="POST"
+              className="space-y-6"
+            >
               <div className="relative">
                 <input 
                   type="text" 
                   id="name"
+                  name="name"
                   className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer"
                   placeholder=" "
+                  required
                 />
                 <label 
                   htmlFor="name"
@@ -246,8 +252,10 @@ function App() {
                 <input 
                   type="email" 
                   id="email"
+                  name="email"
                   className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer"
                   placeholder=" "
+                  required
                 />
                 <label 
                   htmlFor="email"
@@ -259,9 +267,11 @@ function App() {
               <div className="relative">
                 <textarea 
                   id="message"
+                  name="message"
                   rows="4"
                   className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors resize-none peer"
                   placeholder=" "
+                  required
                 ></textarea>
                 <label 
                   htmlFor="message"
