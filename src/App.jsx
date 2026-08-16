@@ -237,13 +237,13 @@ function App() {
                   type="text" 
                   id="name"
                   name="name"
-                  className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer"
+                  className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer pt-6 pb-2"
                   placeholder=" "
                   required
                 />
                 <label 
                   htmlFor="name"
-                  className="absolute left-4 top-3 text-steel-500 transition-all duration-200 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-xs peer-focus:text-ember-500 peer-focus:bg-charcoal-900 peer-focus:px-1 peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-charcoal-900 peer-not-placeholder-shown:px-1"
+                  className="absolute left-4 top-4 text-steel-500 transition-all duration-200 peer-focus:-top-1 peer-focus:left-2 peer-focus:text-xs peer-focus:text-ember-500 peer-focus:bg-charcoal-900 peer-focus:px-1 peer-not-placeholder-shown:-top-1 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-charcoal-900 peer-not-placeholder-shown:px-1 z-10"
                 >
                   Your Name
                 </label>
@@ -253,13 +253,13 @@ function App() {
                   type="email" 
                   id="email"
                   name="email"
-                  className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer"
+                  className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer pt-6 pb-2"
                   placeholder=" "
                   required
                 />
                 <label 
                   htmlFor="email"
-                  className="absolute left-4 top-3 text-steel-500 transition-all duration-200 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-xs peer-focus:text-ember-500 peer-focus:bg-charcoal-900 peer-focus:px-1 peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-charcoal-900 peer-not-placeholder-shown:px-1"
+                  className="absolute left-4 top-4 text-steel-500 transition-all duration-200 peer-focus:-top-1 peer-focus:left-2 peer-focus:text-xs peer-focus:text-ember-500 peer-focus:bg-charcoal-900 peer-focus:px-1 peer-not-placeholder-shown:-top-1 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-charcoal-900 peer-not-placeholder-shown:px-1 z-10"
                 >
                   Email Address
                 </label>
@@ -269,13 +269,13 @@ function App() {
                   id="message"
                   name="message"
                   rows="4"
-                  className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors resize-none peer"
+                  className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors resize-none peer pt-6 pb-2"
                   placeholder=" "
                   required
                 ></textarea>
                 <label 
                   htmlFor="message"
-                  className="absolute left-4 top-3 text-steel-500 transition-all duration-200 peer-focus:-top-2 peer-focus:left-2 peer-focus:text-xs peer-focus:text-ember-500 peer-focus:bg-charcoal-900 peer-focus:px-1 peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-charcoal-900 peer-not-placeholder-shown:px-1"
+                  className="absolute left-4 top-4 text-steel-500 transition-all duration-200 peer-focus:-top-1 peer-focus:left-2 peer-focus:text-xs peer-focus:text-ember-500 peer-focus:bg-charcoal-900 peer-focus:px-1 peer-not-placeholder-shown:-top-1 peer-not-placeholder-shown:left-2 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:bg-charcoal-900 peer-not-placeholder-shown:px-1 z-10"
                 >
                   Tell us about your project
                 </label>
