@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Cpu, Code, Wifi, Users, Target, Shield, Mail, Linkedin, ChevronRight, MessageSquare } from 'lucide-react'
+import { ArrowRight, Cpu, Code, Wifi, Users, Target, Shield, Mail, Linkedin, ChevronRight, MessageSquare, Menu, X } from 'lucide-react'
 
 function App() {
   const [visibleSections, setVisibleSections] = useState({})
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [formStatus, setFormStatus] = useState('idle') // idle, submitting, success, error
+  const [formMessage, setFormMessage] = useState('')
   const sectionRefs = {
     services: useRef(null),
     capabilities: useRef(null),
@@ -47,6 +50,46 @@ function App() {
               <a href="#why-us" className="text-steel-400 hover:text-ember-500 transition-colors">Why Us</a>
               <a href="#contact" className="text-steel-400 hover:text-ember-500 transition-colors">Contact</a>
             </div>
+            <button 
+              className="md:hidden text-steel-400 hover:text-ember-500 transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+        {/* Mobile Menu */}
+        <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} bg-charcoal-900 border-b border-charcoal-700`}>
+          <div className="px-4 py-4 space-y-3">
+            <a 
+              href="#services" 
+              className="block text-steel-400 hover:text-ember-500 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              What We Do
+            </a>
+            <a 
+              href="#capabilities" 
+              className="block text-steel-400 hover:text-ember-500 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              What We Can Build
+            </a>
+            <a 
+              href="#why-us" 
+              className="block text-steel-400 hover:text-ember-500 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Why Us
+            </a>
+            <a 
+              href="#contact" 
+              className="block text-steel-400 hover:text-ember-500 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
           </div>
         </div>
       </nav>
@@ -228,8 +271,35 @@ function App() {
           </div>
           <div className="max-w-xl mx-auto">
             <form 
-              action="https://formspree.io/f/mgawnwne" 
-              method="POST"
+              onSubmit={async (e) => {
+                e.preventDefault()
+                setFormStatus('submitting')
+                
+                const formData = new FormData(e.target)
+                
+                try {
+                  const response = await fetch('https://formspree.io/f/mgawnwne', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                      'Accept': 'application/json'
+                    }
+                  })
+                  
+                  if (response.ok) {
+                    setFormStatus('success')
+                    setFormMessage('Thank you! Your message has been sent successfully.')
+                    e.target.reset()
+                    setTimeout(() => setFormStatus('idle'), 5000)
+                  } else {
+                    setFormStatus('error')
+                    setFormMessage('Oops! There was a problem sending your message. Please try again.')
+                  }
+                } catch (error) {
+                  setFormStatus('error')
+                  setFormMessage('Oops! There was a problem sending your message. Please try again.')
+                }
+              }}
               className="space-y-6"
             >
               <div className="relative">
@@ -240,6 +310,7 @@ function App() {
                   className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer pt-6 pb-2"
                   placeholder=" "
                   required
+                  disabled={formStatus === 'submitting'}
                 />
                 <label 
                   htmlFor="name"
@@ -256,6 +327,7 @@ function App() {
                   className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors peer pt-6 pb-2"
                   placeholder=" "
                   required
+                  disabled={formStatus === 'submitting'}
                 />
                 <label 
                   htmlFor="email"
@@ -272,6 +344,7 @@ function App() {
                   className="w-full px-4 py-3 bg-charcoal-900 border border-charcoal-700 text-offwhite focus:border-ember-500 focus:outline-none transition-colors resize-none peer pt-6 pb-2"
                   placeholder=" "
                   required
+                  disabled={formStatus === 'submitting'}
                 ></textarea>
                 <label 
                   htmlFor="message"
@@ -282,11 +355,22 @@ function App() {
               </div>
               <button 
                 type="submit"
-                className="w-full px-8 py-4 bg-ember-500 text-white font-semibold hover:bg-ember-600 transition-all spark-glow-hover"
+                disabled={formStatus === 'submitting'}
+                className="w-full px-8 py-4 bg-ember-500 text-white font-semibold hover:bg-ember-600 transition-all spark-glow-hover disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
               </button>
             </form>
+            {formStatus === 'success' && (
+              <div className="mt-4 p-4 bg-green-900/50 border border-green-700 text-green-400 text-center rounded">
+                {formMessage}
+              </div>
+            )}
+            {formStatus === 'error' && (
+              <div className="mt-4 p-4 bg-red-900/50 border border-red-700 text-red-400 text-center rounded">
+                {formMessage}
+              </div>
+            )}
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="mailto:yottaforgeofficial@gmail.com" className="flex items-center text-steel-400 hover:text-ember-500 transition-colors group">
                 <Mail className="w-5 h-5 mr-2 group-hover:spark-glow" />
